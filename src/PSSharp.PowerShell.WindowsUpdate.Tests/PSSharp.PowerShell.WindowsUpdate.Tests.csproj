@@ -20,8 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PSSharp.PowerShell.WindowsUpdate\PSSharp.PowerShell.WindowsUpdate.csproj" />
-  </ItemGroup>
-
 </Project>

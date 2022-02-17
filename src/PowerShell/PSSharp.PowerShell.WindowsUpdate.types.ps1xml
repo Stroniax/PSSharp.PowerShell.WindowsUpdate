@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Types>
     <Type>
-        <Name>PSSharp.PowerShell.WindowsUpdate.UpdatePackage</Name>
+        <!--IUpdate-->
+        <Name>System.__ComObject#{c1c2f21a-d2f4-4902-b5c6-8a081c19a890}</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Type</Name>
+                <GetScriptBlock>[PSSharp.PowerShell.WindowsUpdate.UpdateType]$this.Type</GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>UpdateId</Name>
+                <GetScriptBlock>$this.Identity.UpdateId</GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RevisionNumber</Name>
+                <GetScriptBlock>$this.Identity.RevisionNumber</GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <!--StringCollection-->
+        <Name>System.__ComObject#{eff90582-2ddc-480f-a06d-60f3fbc362c3}</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>ToString</Name>
+                <Script>$this.GetEnumerator()</Script>
+            </ScriptMethod>
+        </Members>
     </Type>
 </Types>

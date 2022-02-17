@@ -48,10 +48,10 @@ process {
             [void]$NestedModules.Add("$binaryProject.dll")
             [void]$RequiredAssemblies.Add("$binaryProject.dll")
             if ($Data['SetAssemblyVersionOnBuild']) {
-                dotnet publish $binaryProjectPath --output $OutputPath /p:Version="$Version" /p:AssemblyFileVersion="$Version" /p:AssemblyVersion="$Version"
+                dotnet publish $binaryProjectPath --output $OutputPath /p:Version="$Version" /p:AssemblyFileVersion="$Version" /p:AssemblyVersion="$Version" --framework netstandard2.0
             }
             else {
-                dotnet publish $binaryProjectPath --output $OutputPath
+                dotnet publish $binaryProjectPath --output $OutputPath --framework netstandard2.0
             }
 
             $cmdletAlias = Start-Job -ScriptBlock $GetExportedCommandsScript | Receive-Job -Wait -AutoRemoveJob
@@ -80,9 +80,9 @@ process {
                     [void]$NestedModules.Add("$scriptProject.psm1")
                 }
 
-                $RequiredAssemblies.AddRange($ScriptModuleData.RequiredAssemblies)
+                $RequiredAssemblies.AddRange([string[]]$ScriptModuleData.RequiredAssemblies)
                 if ($ScriptModuleData.RequiredModules) {
-                    $RequiredModules.AddRange($ScriptModuleData.RequiredModules)
+                    $RequiredModules.AddRange([string[]]$ScriptModuleData.RequiredModules)
                 }
                 if ($RequiredPSEditions -and ($RequiredPSEditions -ne $ScriptModuleData.RequiredPSEditions)) {
                     Write-Error 'Conflicting PSEdition requirements.'
@@ -138,8 +138,8 @@ process {
             | Where-Object { $_.FullName -notin $ExcludeFiles.FullName }
             $OutputTypeFiles = $TypeFiles | Copy-Item -Destination {Join-Path $OutputPath $_.Name} -PassThru
             $OutputFormatFiles = $FormatFiles | Copy-Item -Destination {Join-Path $OutputPath $_.Name} -PassThru
-            $TypesToProcess.AddRange($OutputTypeFiles.Name)
-            $FormatsToProcess.AddRange($OutputFormatFiles.Name)
+            $TypesToProcess.AddRange([string[]]$OutputTypeFiles.Name)
+            $FormatsToProcess.AddRange([string[]]$OutputFormatFiles.Name)
 
             # Identify functions to export from the module
             $PublicFunctionsDir = Join-Path $scriptProjectPath 'Public'
@@ -147,11 +147,11 @@ process {
                 $FunctionNames = @(Get-ChildItem $PublicFunctionsDir -Recurse -File
                 | Where-Object Name -like '*-*.ps*'
                 | Select-Object -ExpandProperty BaseName)
-                $FunctionsToExport.AddRange($FunctionNames)
+                $FunctionsToExport.AddRange([string[]]$FunctionNames)
                 if ($ScriptModuleData) {
                     foreach ($FunctionName in $FunctionNames) {
                         if ($ScriptModuleData.Aliases.ContainsKey($FunctionName)) {
-                            $AliasesToExport.AddRange($ScriptModuleData.Aliases[$FunctionName])
+                            $AliasesToExport.AddRange([string[]]$ScriptModuleData.Aliases[$FunctionName])
                         }
                     }
                 }
@@ -237,11 +237,11 @@ process {
         $Manifest['NestedModules'] = $NestedModules | Where-Object { $_ -ne $Manifest['RootModule'] }
         if (!$Manifest.ContainsKey('RequiredAssemblies')) {
             $AssembliesFromOutput = Get-ChildItem -Path $OutputPath -Recurse -Include '*.dll' | TrimPath
-            $RequiredAssemblies.AddRange($AssembliesFromOutput)
+            $RequiredAssemblies.AddRange([string[]]$AssembliesFromOutput)
             $Manifest['RequiredAssemblies'] = $RequiredAssemblies
         }
         else {
-            $RequiredAssemblies.AddRange($Manifest['RequiredAssemblies'])
+            $RequiredAssemblies.AddRange([string[]]$Manifest['RequiredAssemblies'])
             $Manifest['RequiredAssemblies'] = $RequiredAssemblies
         }
         New-ModuleManifest @Manifest
