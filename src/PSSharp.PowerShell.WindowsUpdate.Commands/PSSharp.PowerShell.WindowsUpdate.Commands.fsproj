@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="PowerShellApi.fs" />
+    <Compile Include="FSharpPowerShell.fs" />
+    <Compile Include="PSCommands.fs" />
+    <Compile Include="WindowsUpdateErrors.fs" />
+    <Compile Include="WindowsUpdateModels.fs" />
+    <Compile Include="WindowsUpdateHelpers.fs" />
+    <Compile Include="PSModuleInitializer.fs" />
+    <Compile Include="WindowsUpdateServiceManager.fs" />
+    <Compile Include="Get-WindowsUpdateService.fs" />
+    <Compile Include="Register-WindowsAutomaticUpdateService.fs" />
+    <Compile Include="WindowsUpdateSearcher.fs" />
+    <Compile Include="Get-WindowsUpdate.fs" />
+    <Compile Include="Get-WindowsUpdateHistory.fs" />
+    <Compile Include="WindowsUpdateDownloader.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="WUApiLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>b596cc9f-56e5-419e-a622-e01bb457431e</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="all" />
+    <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>

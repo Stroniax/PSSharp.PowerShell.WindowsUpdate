@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B6DA4B76-3F84-4ACA-A41D-4E7AE633AD49}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1D5BB6C6-E4B1-49B3-B905-9C8B98A1A539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSSharp.PowerShell.WindowsUpdate", "src\PSSharp.PowerShell.WindowsUpdate\PSSharp.PowerShell.WindowsUpdate.csproj", "{9D6DDE96-DE25-447B-A13E-306760AE43CE}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PSSharp.PowerShell.WindowsUpdate.Commands", "src\PSSharp.PowerShell.WindowsUpdate.Commands\PSSharp.PowerShell.WindowsUpdate.Commands.fsproj", "{F10C61D1-2472-4F81-8F55-043EA70F1C6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSSharp.PowerShell.WindowsUpdate.Tests", "src\PSSharp.PowerShell.WindowsUpdate.Tests\PSSharp.PowerShell.WindowsUpdate.Tests.csproj", "{91F532EE-B103-4656-8E24-25F73624576E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BD3A19AF-3590-434C-B41E-B10B1F1A0BE9}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PSSharp.PowerShell.WindowsUpdate.Commands.Tests", "tests\PSSharp.PowerShell.WindowsUpdate.Commands.Tests\PSSharp.PowerShell.WindowsUpdate.Commands.Tests.fsproj", "{2F3264A4-37EC-479B-A64C-23C5CF64F596}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,17 +20,21 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9D6DDE96-DE25-447B-A13E-306760AE43CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D6DDE96-DE25-447B-A13E-306760AE43CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D6DDE96-DE25-447B-A13E-306760AE43CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D6DDE96-DE25-447B-A13E-306760AE43CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91F532EE-B103-4656-8E24-25F73624576E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91F532EE-B103-4656-8E24-25F73624576E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91F532EE-B103-4656-8E24-25F73624576E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91F532EE-B103-4656-8E24-25F73624576E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10C61D1-2472-4F81-8F55-043EA70F1C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10C61D1-2472-4F81-8F55-043EA70F1C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10C61D1-2472-4F81-8F55-043EA70F1C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10C61D1-2472-4F81-8F55-043EA70F1C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758873C9-D6DC-4EB5-826A-B260F411931C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758873C9-D6DC-4EB5-826A-B260F411931C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758873C9-D6DC-4EB5-826A-B260F411931C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758873C9-D6DC-4EB5-826A-B260F411931C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3264A4-37EC-479B-A64C-23C5CF64F596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3264A4-37EC-479B-A64C-23C5CF64F596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3264A4-37EC-479B-A64C-23C5CF64F596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3264A4-37EC-479B-A64C-23C5CF64F596}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9D6DDE96-DE25-447B-A13E-306760AE43CE} = {B6DA4B76-3F84-4ACA-A41D-4E7AE633AD49}
-		{91F532EE-B103-4656-8E24-25F73624576E} = {B6DA4B76-3F84-4ACA-A41D-4E7AE633AD49}
+		{F10C61D1-2472-4F81-8F55-043EA70F1C6A} = {1D5BB6C6-E4B1-49B3-B905-9C8B98A1A539}
+		{2F3264A4-37EC-479B-A64C-23C5CF64F596} = {BD3A19AF-3590-434C-B41E-B10B1F1A0BE9}
 	EndGlobalSection
 EndGlobal
